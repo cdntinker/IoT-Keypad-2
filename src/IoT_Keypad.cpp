@@ -26,7 +26,7 @@ size_t freeRam();
 char ClientName[] = "unoClient";   // Must be unique
 #endif
 
-#ifdef ArduinoNano
+#ifdef ArduinoProMini
 #define EthENC28J60
 #define KeyPadNano
 char ClientName[] = "nanoClient";   // Must be unique
@@ -72,7 +72,7 @@ void setup()
 #ifdef ArduinoUNO
   Serial.println(F("| Running on an UNO        |"));
 #endif
-#ifdef ArduinoNano
+#ifdef ArduinoProMini
   Serial.println(F("| Running on a Pro-Mini    |"));
 #endif
   Serial.println(F("+--------------------------+"));
