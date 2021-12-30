@@ -1,1 +1,1531 @@
-[{"id":"67f1efdc.110188","type":"tab","label":"IoT Keypad","disabled":false,"info":""},{"id":"30143f44.a3c3e8","type":"mqtt in","z":"67f1efdc.110188","name":"Message","topic":"Arduino/Keypad/nanoClient/Message","qos":"2","datatype":"auto","broker":"f32dd71f.7c852","x":120,"y":460,"wires":[["41bd1087.82e87"]]},{"id":"b432e9a3.028dc8","type":"function","z":"67f1efdc.110188","name":"1","func":"msg.topic = \"Button Pressed\";\nmsg.type = \"Speech\";\nmsg.target = \"Scotts Speaker\";\nmsg.payload = \"Fucking Retard!\";\nreturn msg;","outputs":1,"noerr":0,"x":710,"y":40,"wires":[["6fcd375d.4cd008","9e40bfd7.93f1a8"]]},{"id":"6d37056c.d2db24","type":"function","z":"67f1efdc.110188","name":"2","func":"msg.topic = \"Button Pressed\";\nmsg.type = \"Speech\";\nmsg.target = \"Scotts Speaker\";\nmsg.payload = \"well shit\";\nreturn msg;","outputs":1,"noerr":0,"x":710,"y":80,"wires":[["6fcd375d.4cd008","9e40bfd7.93f1a8"]]},{"id":"10825ce.4fa7e23","type":"function","z":"67f1efdc.110188","name":"3","func":"msg.topic = \"Button Pressed\";\nmsg.type = \"Speech\";\nmsg.target = \"Scotts Speaker\";\nmsg.payload = \"woot woot\";\nreturn msg;","outputs":1,"noerr":0,"x":710,"y":120,"wires":[["6fcd375d.4cd008","9e40bfd7.93f1a8"]]},{"id":"d9180170.0f768","type":"function","z":"67f1efdc.110188","name":"4","func":"msg.topic = \"Button Pressed\";\nmsg.type = \"Speech\";\nmsg.target = \"Scotts Speaker\";\nmsg.payload = \"idjit\";\nreturn msg;","outputs":1,"noerr":0,"x":710,"y":160,"wires":[["6fcd375d.4cd008","9e40bfd7.93f1a8"]]},{"id":"3ec66656.b8b822","type":"function","z":"67f1efdc.110188","name":"5","func":"msg.topic = \"Button Pressed\";\nmsg.type = \"Speech\";\nmsg.target = \"Scotts Speaker\";\nmsg.payload = \"Bloody Hell!\";\nreturn msg;","outputs":1,"noerr":0,"x":710,"y":200,"wires":[["6fcd375d.4cd008","9e40bfd7.93f1a8"]]},{"id":"2cabe145.4c8196","type":"function","z":"67f1efdc.110188","name":"6","func":"msg.topic = \"Button Pressed\";\nmsg.type = \"Speech\";\nmsg.target = \"Scotts Speaker\";\nmsg.payload = \"Yee Ha!\";\nreturn msg;","outputs":1,"noerr":0,"x":710,"y":240,"wires":[["6fcd375d.4cd008","9e40bfd7.93f1a8"]]},{"id":"8a3912e4.02ed28","type":"function","z":"67f1efdc.110188","name":"7","func":"msg.topic = \"Button Pressed\";\nmsg.type = \"Speech\";\nmsg.target = \"Scotts Speaker\";\nmsg.payload = \"Bull Shit!\";\nreturn msg;","outputs":1,"noerr":0,"x":710,"y":280,"wires":[["6fcd375d.4cd008","9e40bfd7.93f1a8"]]},{"id":"b9c72951.97f448","type":"function","z":"67f1efdc.110188","name":"8","func":"msg.topic = \"Button Pressed\";\nmsg.type = \"Speech\";\nmsg.target = \"Scotts Speaker\";\nmsg.payload = \"Oh poop\";\nreturn msg;","outputs":1,"noerr":0,"x":710,"y":320,"wires":[["6fcd375d.4cd008","9e40bfd7.93f1a8"]]},{"id":"bd5a8a3c.c9041","type":"function","z":"67f1efdc.110188","name":"9","func":"msg.topic = \"Button Pressed\";\nmsg.type = \"Speech\";\nmsg.target = \"Scotts Speaker\";\nmsg.payload = \"OogaBooga\";\nreturn msg;","outputs":1,"noerr":0,"x":710,"y":360,"wires":[["6fcd375d.4cd008","9e40bfd7.93f1a8"]]},{"id":"62097705.d57ff8","type":"function","z":"67f1efdc.110188","name":"0","func":"msg.topic = \"Button Pressed\";\nmsg.type = \"Speech\";\nmsg.target = \"Scotts Speaker\";\nmsg.payload = \"Dang!\";\nreturn msg;","outputs":1,"noerr":0,"x":710,"y":400,"wires":[["6fcd375d.4cd008","9e40bfd7.93f1a8"]]},{"id":"c5c7fe4a.9780d8","type":"function","z":"67f1efdc.110188","name":"A","func":"var Speaker=flow.get('Speakers');\nmsg.payload=(Speaker[0]);\nflow.set('count',0);\nflow.set('Speaker',(Speaker[0]));\nmsg.target=(Speaker[0]);\nreturn msg;\n","outputs":1,"noerr":0,"x":710,"y":460,"wires":[["6fcd375d.4cd008"]]},{"id":"d90bb74e.e4c0b8","type":"function","z":"67f1efdc.110188","name":"B","func":"var Speaker=flow.get('Speakers');\nmsg.payload=(Speaker[1]);\nflow.set('count',1);\nflow.set('Speaker',(Speaker[1]));\nmsg.target=(Speaker[1]);\nreturn msg;\n","outputs":1,"noerr":0,"x":710,"y":500,"wires":[["6fcd375d.4cd008"]]},{"id":"3e374136.f9d86e","type":"function","z":"67f1efdc.110188","name":"C","func":"var count=flow.get('count') || 0;\nvar Speaker=flow.get('Speakers');\ncount -= 1;\nif (count < 0) {\n  count = Speaker.length-1;\n}\nmsg.payload=count;\nmsg.FUCK=Speaker.length;\nflow.set('count',count);\nflow.set('Speaker',(Speaker[count]));\nmsg.target=(Speaker[count]);\nreturn msg;","outputs":1,"noerr":0,"x":710,"y":540,"wires":[["6fcd375d.4cd008"]]},{"id":"3d26d437.5ca65c","type":"function","z":"67f1efdc.110188","name":"D","func":"var count=flow.get('count') || 0;\nvar Speaker=flow.get('Speakers');\ncount += 1;\nif (count > (Speaker.length - 1)) {\n  count = 0;\n}\nmsg.payload=count;\nmsg.FUCK=Speaker.length;\nflow.set('count',count);\nflow.set('Speaker',(Speaker[count]));\nmsg.target=(Speaker[count]);\nreturn msg;","outputs":1,"noerr":0,"x":710,"y":580,"wires":[["6fcd375d.4cd008"]]},{"id":"5c16cce4.5fc024","type":"function","z":"67f1efdc.110188","name":"*","func":"msg.topic = \"Button Pressed\";\nmsg.type = \"Control\";\nmsg.target = \"TasmOTA/Night_Light/cmnd/POWER\";\nmsg.payload = \"toggle\";\nreturn msg;","outputs":1,"noerr":0,"x":710,"y":660,"wires":[["6fcd375d.4cd008","9db7e0ab.149c18","71a4ed52.5234c4"]]},{"id":"3d7e361e.e55422","type":"function","z":"67f1efdc.110188","name":"#","func":"msg.topic = \"Button Pressed\";\nmsg.type = \"Control\";\nmsg.target = \"TasmOTA/Night_Light/cmnd/POWER\";\nmsg.payload = \"toggle\";\nreturn msg;","outputs":1,"noerr":0,"x":710,"y":700,"wires":[["6fcd375d.4cd008","9db7e0ab.149c18","71a4ed52.5234c4"]]},{"id":"6fcd375d.4cd008","type":"debug","z":"67f1efdc.110188","name":"RESULT","active":false,"tosidebar":true,"console":false,"tostatus":false,"complete":"true","targetType":"full","x":960,"y":400,"wires":[]},{"id":"41bd1087.82e87","type":"switch","z":"67f1efdc.110188","name":"","property":"payload","propertyType":"msg","rules":[{"t":"regex","v":"[0-9]","vt":"str","case":false},{"t":"regex","v":"[a-z]","vt":"str","case":true},{"t":"regex","v":"[\\*\\#]","vt":"str","case":false}],"checkall":"true","repair":false,"outputs":3,"x":310,"y":460,"wires":[["a0fa172e.12b3c"],["a3c9ded4.b09598"],["e951bbf3.7e90c8"]]},{"id":"a0fa172e.12b3c","type":"switch","z":"67f1efdc.110188","name":"Numbers","property":"payload","propertyType":"msg","rules":[{"t":"eq","v":"1","vt":"str"},{"t":"eq","v":"2","vt":"str"},{"t":"eq","v":"3","vt":"num"},{"t":"eq","v":"4","vt":"num"},{"t":"eq","v":"5","vt":"num"},{"t":"eq","v":"6","vt":"num"},{"t":"eq","v":"7","vt":"num"},{"t":"eq","v":"8","vt":"num"},{"t":"eq","v":"9","vt":"num"},{"t":"eq","v":"0","vt":"num"}],"checkall":"true","repair":false,"outputs":10,"x":480,"y":340,"wires":[["b432e9a3.028dc8"],["6d37056c.d2db24"],["10825ce.4fa7e23"],["d9180170.0f768"],["3ec66656.b8b822"],["2cabe145.4c8196"],["8a3912e4.02ed28"],["b9c72951.97f448"],["bd5a8a3c.c9041"],["62097705.d57ff8"]]},{"id":"a3c9ded4.b09598","type":"switch","z":"67f1efdc.110188","name":"Letters","property":"payload","propertyType":"msg","rules":[{"t":"regex","v":"A","vt":"str","case":true},{"t":"regex","v":"B","vt":"str","case":true},{"t":"regex","v":"C","vt":"str","case":true},{"t":"regex","v":"D","vt":"str","case":true}],"checkall":"true","repair":false,"outputs":4,"x":480,"y":460,"wires":[["c5c7fe4a.9780d8"],["d90bb74e.e4c0b8"],["3e374136.f9d86e"],["3d26d437.5ca65c"]]},{"id":"e951bbf3.7e90c8","type":"switch","z":"67f1efdc.110188","name":"Symbols","property":"payload","propertyType":"msg","rules":[{"t":"eq","v":"*","vt":"str"},{"t":"eq","v":"#","vt":"str"}],"checkall":"true","repair":false,"outputs":2,"x":480,"y":540,"wires":[["5c16cce4.5fc024"],["3d7e361e.e55422"]]},{"id":"82bcfed5.7ef0d8","type":"mqtt out","z":"67f1efdc.110188","name":"","topic":"","qos":"","retain":"","broker":"f32dd71f.7c852","x":1030,"y":80,"wires":[]},{"id":"9e40bfd7.93f1a8","type":"change","z":"67f1efdc.110188","name":"","rules":[{"t":"set","p":"topic","pt":"msg","to":"Speaker","tot":"flow"}],"action":"","property":"","from":"","to":"","reg":false,"x":1000,"y":40,"wires":[["82bcfed5.7ef0d8"]]},{"id":"4dae529d.88f68c","type":"config","z":"67f1efdc.110188","name":"Reset","properties":[{"p":"Speakers","pt":"flow","to":"[\"Scotts Speaker\",\"Workshop Speaker\",\"Kitchen Speaker\",\"Office Speaker\"]","tot":"json"},{"p":"count","pt":"flow","to":"0","tot":"num"},{"p":"Speaker","pt":"flow","to":"Scotts Speaker damnit","tot":"str"}],"active":true,"x":130,"y":60,"wires":[]},{"id":"af002881.f206f","type":"function","z":"67f1efdc.110188","name":"","func":"var Speaker=flow.get('Speaker');\nmsg.payload=(Speaker);\nreturn msg;","outputs":1,"noerr":0,"x":250,"y":100,"wires":[["202347b5.d95ea8"]]},{"id":"202347b5.d95ea8","type":"debug","z":"67f1efdc.110188","name":"ugh","active":true,"tosidebar":true,"console":false,"tostatus":false,"complete":"true","targetType":"full","x":370,"y":120,"wires":[]},{"id":"a9f435af.7118c8","type":"mqtt out","z":"67f1efdc.110188","name":"","topic":"","qos":"","retain":"","broker":"f32dd71f.7c852","x":1030,"y":700,"wires":[]},{"id":"9db7e0ab.149c18","type":"change","z":"67f1efdc.110188","name":"","rules":[{"t":"set","p":"topic","pt":"msg","to":"target","tot":"msg"}],"action":"","property":"","from":"","to":"","reg":false,"x":1000,"y":660,"wires":[["a9f435af.7118c8"]]},{"id":"2e143c9f.2d0d14","type":"inject","z":"67f1efdc.110188","name":"","topic":"","payload":"","payloadType":"str","repeat":"","crontab":"","once":false,"onceDelay":0.1,"x":130,"y":120,"wires":[["af002881.f206f","b9440dec.cf5898"]]},{"id":"a8dfea2e.904b6","type":"comment","z":"67f1efdc.110188","name":"Set Audio to Lab GH","info":"","x":870,"y":460,"wires":[]},{"id":"248d5bb3.22bb0c","type":"comment","z":"67f1efdc.110188","name":"Set Audio to Shop GH","info":"","x":880,"y":500,"wires":[]},{"id":"a46ba32e.9346d","type":"comment","z":"67f1efdc.110188","name":"Cycle Audio to Previous GH","info":"","x":900,"y":540,"wires":[]},{"id":"eb3b1314.a03c4","type":"comment","z":"67f1efdc.110188","name":"Cycle Audio to Next GH","info":"","x":880,"y":580,"wires":[]},{"id":"4995caa5.cfe394","type":"ui_button","z":"67f1efdc.110188","name":"","group":"262b6182.58ab66","order":1,"width":0,"height":0,"passthru":false,"label":"button","tooltip":"","color":"","bgcolor":"","icon":"","payload":"0","payloadType":"str","topic":"Arduino/Keypad/nanoClient/Message","x":81,"y":263,"wires":[["41bd1087.82e87"]]},{"id":"b9440dec.cf5898","type":"function","z":"67f1efdc.110188","name":"","func":"var Speakers=flow.get('Speakers');\nmsg.payload=(Speakers);\nreturn msg;","outputs":1,"noerr":0,"x":250,"y":140,"wires":[["202347b5.d95ea8"]]},{"id":"9e2b98c5.ca7d3","type":"ui_text","z":"67f1efdc.110188","group":"262b6182.58ab66","order":3,"width":0,"height":0,"name":"","label":"text","format":"{{msg.payload}}","layout":"row-spread","x":491,"y":628,"wires":[]},{"id":"5c1dd8e.ad353a8","type":"ui_button","z":"67f1efdc.110188","name":"","group":"262b6182.58ab66","order":2,"width":0,"height":0,"passthru":false,"label":"button","tooltip":"","color":"","bgcolor":"","icon":"","payload":"","payloadType":"str","topic":"","x":130,"y":635,"wires":[["42d278f2.17f078"]]},{"id":"42d278f2.17f078","type":"change","z":"67f1efdc.110188","name":"","rules":[{"t":"set","p":"payload","pt":"msg","to":"Speaker","tot":"flow"}],"action":"","property":"","from":"","to":"","reg":false,"x":315,"y":629,"wires":[["9e2b98c5.ca7d3"]]},{"id":"71a4ed52.5234c4","type":"debug","z":"67f1efdc.110188","name":"","active":false,"tosidebar":true,"console":false,"tostatus":false,"complete":"true","targetType":"full","x":1007,"y":619,"wires":[]},{"id":"f32dd71f.7c852","type":"mqtt-broker","z":"","name":"","broker":"automation","port":"1883","clientid":"","usetls":false,"compatmode":true,"keepalive":"60","cleansession":true,"birthTopic":"","birthQos":"0","birthPayload":"","closeTopic":"","closePayload":"","willTopic":"","willQos":"0","willPayload":""},{"id":"262b6182.58ab66","type":"ui_group","z":"","name":"Icle","tab":"a87a4fa.46cb9b","disp":true,"width":"6","collapse":false},{"id":"a87a4fa.46cb9b","type":"ui_tab","z":"","name":"Test","icon":"dashboard","disabled":false,"hidden":false}]
+[
+    {
+        "id": "67f1efdc.110188",
+        "type": "tab",
+        "label": "IoT Keypad",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "30143f44.a3c3e8",
+        "type": "mqtt in",
+        "z": "67f1efdc.110188",
+        "name": "Message",
+        "topic": "Arduino/Keypad/nanoClient/Message",
+        "qos": "2",
+        "datatype": "auto",
+        "broker": "f32dd71f.7c852",
+        "nl": false,
+        "rap": false,
+        "x": 80,
+        "y": 480,
+        "wires": [
+            [
+                "41bd1087.82e87",
+                "266b721f.473d0e"
+            ]
+        ]
+    },
+    {
+        "id": "41bd1087.82e87",
+        "type": "switch",
+        "z": "67f1efdc.110188",
+        "name": "",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "regex",
+                "v": "[0-9]",
+                "vt": "str",
+                "case": false
+            },
+            {
+                "t": "regex",
+                "v": "[\\*\\#]",
+                "vt": "str",
+                "case": false
+            },
+            {
+                "t": "regex",
+                "v": "[a-z]",
+                "vt": "str",
+                "case": true
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 3,
+        "x": 230,
+        "y": 480,
+        "wires": [
+            [
+                "a0fa172e.12b3c"
+            ],
+            [
+                "e951bbf3.7e90c8"
+            ],
+            [
+                "a3c9ded4.b09598"
+            ]
+        ]
+    },
+    {
+        "id": "a0fa172e.12b3c",
+        "type": "switch",
+        "z": "67f1efdc.110188",
+        "name": "Numbers",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "1",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "2",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "3",
+                "vt": "num"
+            },
+            {
+                "t": "eq",
+                "v": "4",
+                "vt": "num"
+            },
+            {
+                "t": "eq",
+                "v": "5",
+                "vt": "num"
+            },
+            {
+                "t": "eq",
+                "v": "6",
+                "vt": "num"
+            },
+            {
+                "t": "eq",
+                "v": "7",
+                "vt": "num"
+            },
+            {
+                "t": "eq",
+                "v": "8",
+                "vt": "num"
+            },
+            {
+                "t": "eq",
+                "v": "9",
+                "vt": "num"
+            },
+            {
+                "t": "eq",
+                "v": "0",
+                "vt": "num"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 10,
+        "x": 380,
+        "y": 220,
+        "wires": [
+            [
+                "261e1818.fd02f8"
+            ],
+            [
+                "c90e7db6.8a82f"
+            ],
+            [
+                "a37c4099.3528d"
+            ],
+            [
+                "8c0855cd.68b388"
+            ],
+            [
+                "f627441.1d8a9b8"
+            ],
+            [
+                "23398b41.849d64"
+            ],
+            [
+                "3439a40d.49f7bc"
+            ],
+            [
+                "477a4cd6.fbd194"
+            ],
+            [
+                "1e363993.46fcd6"
+            ],
+            [
+                "2c309c2e.3d2154"
+            ]
+        ]
+    },
+    {
+        "id": "a3c9ded4.b09598",
+        "type": "switch",
+        "z": "67f1efdc.110188",
+        "name": "Letters",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "regex",
+                "v": "A",
+                "vt": "str",
+                "case": true
+            },
+            {
+                "t": "regex",
+                "v": "B",
+                "vt": "str",
+                "case": true
+            },
+            {
+                "t": "regex",
+                "v": "C",
+                "vt": "str",
+                "case": true
+            },
+            {
+                "t": "regex",
+                "v": "D",
+                "vt": "str",
+                "case": true
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 4,
+        "x": 370,
+        "y": 620,
+        "wires": [
+            [
+                "94a22f0a.8a6d4"
+            ],
+            [
+                "81371de5.c7e41"
+            ],
+            [
+                "40d2093d.283f98"
+            ],
+            [
+                "5fd1f360.77e72c"
+            ]
+        ]
+    },
+    {
+        "id": "e951bbf3.7e90c8",
+        "type": "switch",
+        "z": "67f1efdc.110188",
+        "name": "Symbols",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "*",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "#",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 380,
+        "y": 480,
+        "wires": [
+            [
+                "18cbd6ec.370b69"
+            ],
+            [
+                "8d59ed2d.2c3aa"
+            ]
+        ]
+    },
+    {
+        "id": "a8dfea2e.904b6",
+        "type": "comment",
+        "z": "67f1efdc.110188",
+        "name": "A",
+        "info": "",
+        "x": 770,
+        "y": 560,
+        "wires": []
+    },
+    {
+        "id": "248d5bb3.22bb0c",
+        "type": "comment",
+        "z": "67f1efdc.110188",
+        "name": "B",
+        "info": "",
+        "x": 770,
+        "y": 600,
+        "wires": []
+    },
+    {
+        "id": "a46ba32e.9346d",
+        "type": "comment",
+        "z": "67f1efdc.110188",
+        "name": "C",
+        "info": "",
+        "x": 770,
+        "y": 640,
+        "wires": []
+    },
+    {
+        "id": "eb3b1314.a03c4",
+        "type": "comment",
+        "z": "67f1efdc.110188",
+        "name": "D",
+        "info": "",
+        "x": 770,
+        "y": 680,
+        "wires": []
+    },
+    {
+        "id": "266b721f.473d0e",
+        "type": "debug",
+        "z": "67f1efdc.110188",
+        "name": "wtf",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 210,
+        "y": 540,
+        "wires": []
+    },
+    {
+        "id": "4787e954.dca8f8",
+        "type": "link out",
+        "z": "67f1efdc.110188",
+        "name": "",
+        "links": [
+            "5f2ccefb.beed3",
+            "af2b73ea.20735"
+        ],
+        "x": 855,
+        "y": 40,
+        "wires": []
+    },
+    {
+        "id": "ab11f967.ca9318",
+        "type": "link out",
+        "z": "67f1efdc.110188",
+        "name": "",
+        "links": [
+            "5f2ccefb.beed3",
+            "af2b73ea.20735"
+        ],
+        "x": 855,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "78928728.913068",
+        "type": "link out",
+        "z": "67f1efdc.110188",
+        "name": "",
+        "links": [
+            "5f2ccefb.beed3",
+            "af2b73ea.20735"
+        ],
+        "x": 855,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "884190b7.fcccb",
+        "type": "link out",
+        "z": "67f1efdc.110188",
+        "name": "",
+        "links": [
+            "5f2ccefb.beed3",
+            "af2b73ea.20735"
+        ],
+        "x": 855,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "ba2a4e96.38183",
+        "type": "link out",
+        "z": "67f1efdc.110188",
+        "name": "",
+        "links": [
+            "5f2ccefb.beed3",
+            "af2b73ea.20735"
+        ],
+        "x": 855,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "573426cb.688fb8",
+        "type": "link out",
+        "z": "67f1efdc.110188",
+        "name": "",
+        "links": [
+            "5f2ccefb.beed3",
+            "af2b73ea.20735"
+        ],
+        "x": 855,
+        "y": 240,
+        "wires": []
+    },
+    {
+        "id": "bb32bce.4eb6e4",
+        "type": "link out",
+        "z": "67f1efdc.110188",
+        "name": "",
+        "links": [
+            "5f2ccefb.beed3",
+            "af2b73ea.20735"
+        ],
+        "x": 855,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "edbcc362.8a038",
+        "type": "link out",
+        "z": "67f1efdc.110188",
+        "name": "",
+        "links": [
+            "5f2ccefb.beed3",
+            "af2b73ea.20735"
+        ],
+        "x": 855,
+        "y": 320,
+        "wires": []
+    },
+    {
+        "id": "fe187230.31bad",
+        "type": "link out",
+        "z": "67f1efdc.110188",
+        "name": "",
+        "links": [
+            "5f2ccefb.beed3",
+            "af2b73ea.20735"
+        ],
+        "x": 855,
+        "y": 360,
+        "wires": []
+    },
+    {
+        "id": "5c8a909e.ffc5b",
+        "type": "link out",
+        "z": "67f1efdc.110188",
+        "name": "",
+        "links": [
+            "5f2ccefb.beed3",
+            "af2b73ea.20735"
+        ],
+        "x": 855,
+        "y": 400,
+        "wires": []
+    },
+    {
+        "id": "bdded2e4.4994d",
+        "type": "link out",
+        "z": "67f1efdc.110188",
+        "name": "",
+        "links": [
+            "93579c63.f7078",
+            "54e93366.ac80ac",
+            "af2b73ea.20735"
+        ],
+        "x": 855,
+        "y": 560,
+        "wires": []
+    },
+    {
+        "id": "5c362ee6.22b7e",
+        "type": "link out",
+        "z": "67f1efdc.110188",
+        "name": "",
+        "links": [
+            "93579c63.f7078",
+            "54e93366.ac80ac",
+            "af2b73ea.20735"
+        ],
+        "x": 855,
+        "y": 680,
+        "wires": []
+    },
+    {
+        "id": "55a67f69.48409",
+        "type": "link out",
+        "z": "67f1efdc.110188",
+        "name": "",
+        "links": [
+            "93579c63.f7078",
+            "54e93366.ac80ac",
+            "af2b73ea.20735"
+        ],
+        "x": 855,
+        "y": 640,
+        "wires": []
+    },
+    {
+        "id": "28dca17.38b0b5e",
+        "type": "link out",
+        "z": "67f1efdc.110188",
+        "name": "",
+        "links": [
+            "93579c63.f7078",
+            "54e93366.ac80ac",
+            "af2b73ea.20735"
+        ],
+        "x": 855,
+        "y": 600,
+        "wires": []
+    },
+    {
+        "id": "a09ae489.32bed8",
+        "type": "link out",
+        "z": "67f1efdc.110188",
+        "name": "",
+        "links": [
+            "5f2ccefb.beed3",
+            "af2b73ea.20735"
+        ],
+        "x": 855,
+        "y": 500,
+        "wires": []
+    },
+    {
+        "id": "e6840c01.acfc8",
+        "type": "link out",
+        "z": "67f1efdc.110188",
+        "name": "",
+        "links": [
+            "5f2ccefb.beed3",
+            "af2b73ea.20735"
+        ],
+        "x": 855,
+        "y": 460,
+        "wires": []
+    },
+    {
+        "id": "30f4143a.aa5cec",
+        "type": "comment",
+        "z": "67f1efdc.110188",
+        "name": "1",
+        "info": "",
+        "x": 770,
+        "y": 40,
+        "wires": []
+    },
+    {
+        "id": "cd085a34.5de048",
+        "type": "comment",
+        "z": "67f1efdc.110188",
+        "name": "2",
+        "info": "",
+        "x": 770,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "d5ea9592.6ebe48",
+        "type": "comment",
+        "z": "67f1efdc.110188",
+        "name": "3",
+        "info": "",
+        "x": 770,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "ed59c9eb.88ba48",
+        "type": "comment",
+        "z": "67f1efdc.110188",
+        "name": "4",
+        "info": "",
+        "x": 770,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "ed0ca1ab.92b6c",
+        "type": "comment",
+        "z": "67f1efdc.110188",
+        "name": "5",
+        "info": "",
+        "x": 770,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "d11b03a2.cbbce",
+        "type": "comment",
+        "z": "67f1efdc.110188",
+        "name": "6",
+        "info": "",
+        "x": 770,
+        "y": 240,
+        "wires": []
+    },
+    {
+        "id": "f396db9f.0f3878",
+        "type": "comment",
+        "z": "67f1efdc.110188",
+        "name": "7",
+        "info": "",
+        "x": 770,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "e65e4f89.c0af4",
+        "type": "comment",
+        "z": "67f1efdc.110188",
+        "name": "8",
+        "info": "",
+        "x": 770,
+        "y": 320,
+        "wires": []
+    },
+    {
+        "id": "54ea4482.f0ca4c",
+        "type": "comment",
+        "z": "67f1efdc.110188",
+        "name": "9",
+        "info": "",
+        "x": 770,
+        "y": 360,
+        "wires": []
+    },
+    {
+        "id": "5499770.f640b88",
+        "type": "comment",
+        "z": "67f1efdc.110188",
+        "name": "0",
+        "info": "",
+        "x": 770,
+        "y": 400,
+        "wires": []
+    },
+    {
+        "id": "aaf519f7.02d078",
+        "type": "comment",
+        "z": "67f1efdc.110188",
+        "name": "#",
+        "info": "",
+        "x": 770,
+        "y": 500,
+        "wires": []
+    },
+    {
+        "id": "c6b946d2.448628",
+        "type": "comment",
+        "z": "67f1efdc.110188",
+        "name": "*",
+        "info": "",
+        "x": 770,
+        "y": 460,
+        "wires": []
+    },
+    {
+        "id": "18cbd6ec.370b69",
+        "type": "change",
+        "z": "67f1efdc.110188",
+        "name": "Say: bork",
+        "rules": [
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "Button Pressed",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "type",
+                "pt": "msg",
+                "to": "Speech",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "target",
+                "pt": "msg",
+                "to": "Scotts Speaker",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "bork",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 580,
+        "y": 460,
+        "wires": [
+            [
+                "e6840c01.acfc8"
+            ]
+        ]
+    },
+    {
+        "id": "8d59ed2d.2c3aa",
+        "type": "change",
+        "z": "67f1efdc.110188",
+        "name": "Say: bork",
+        "rules": [
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "Button Pressed",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "type",
+                "pt": "msg",
+                "to": "Speech",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "target",
+                "pt": "msg",
+                "to": "Scotts Speaker",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "Say wut?",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 580,
+        "y": 500,
+        "wires": [
+            [
+                "a09ae489.32bed8"
+            ]
+        ]
+    },
+    {
+        "id": "2c309c2e.3d2154",
+        "type": "change",
+        "z": "67f1efdc.110188",
+        "name": "Dang!",
+        "rules": [
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "Button Pressed",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "type",
+                "pt": "msg",
+                "to": "Speech",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "target",
+                "pt": "msg",
+                "to": "Scotts Speaker",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "Dang!",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 570,
+        "y": 400,
+        "wires": [
+            [
+                "5c8a909e.ffc5b"
+            ]
+        ]
+    },
+    {
+        "id": "1e363993.46fcd6",
+        "type": "change",
+        "z": "67f1efdc.110188",
+        "name": "OogaBooga",
+        "rules": [
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "Button Pressed",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "type",
+                "pt": "msg",
+                "to": "Speech",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "target",
+                "pt": "msg",
+                "to": "Scotts Speaker",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "OogaBooga",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 590,
+        "y": 360,
+        "wires": [
+            [
+                "fe187230.31bad"
+            ]
+        ]
+    },
+    {
+        "id": "3439a40d.49f7bc",
+        "type": "change",
+        "z": "67f1efdc.110188",
+        "name": "Bull Shit!",
+        "rules": [
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "Button Pressed",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "type",
+                "pt": "msg",
+                "to": "Speech",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "target",
+                "pt": "msg",
+                "to": "Scotts Speaker",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "Bull Shit!",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 580,
+        "y": 280,
+        "wires": [
+            [
+                "bb32bce.4eb6e4"
+            ]
+        ]
+    },
+    {
+        "id": "261e1818.fd02f8",
+        "type": "change",
+        "z": "67f1efdc.110188",
+        "name": "Fucking Retard!",
+        "rules": [
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "Button Pressed",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "type",
+                "pt": "msg",
+                "to": "Speech",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "target",
+                "pt": "msg",
+                "to": "Scotts Speaker",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "Fucking Retard!",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 600,
+        "y": 40,
+        "wires": [
+            [
+                "4787e954.dca8f8"
+            ]
+        ]
+    },
+    {
+        "id": "c90e7db6.8a82f",
+        "type": "change",
+        "z": "67f1efdc.110188",
+        "name": "well... shit",
+        "rules": [
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "Button Pressed",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "type",
+                "pt": "msg",
+                "to": "Speech",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "target",
+                "pt": "msg",
+                "to": "Scotts Speaker",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "well... shit",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 580,
+        "y": 80,
+        "wires": [
+            [
+                "ab11f967.ca9318"
+            ]
+        ]
+    },
+    {
+        "id": "a37c4099.3528d",
+        "type": "change",
+        "z": "67f1efdc.110188",
+        "name": "woot woot",
+        "rules": [
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "Button Pressed",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "type",
+                "pt": "msg",
+                "to": "Speech",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "target",
+                "pt": "msg",
+                "to": "Scotts Speaker",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "woot woot",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 580,
+        "y": 120,
+        "wires": [
+            [
+                "78928728.913068"
+            ]
+        ]
+    },
+    {
+        "id": "8c0855cd.68b388",
+        "type": "change",
+        "z": "67f1efdc.110188",
+        "name": "it jit",
+        "rules": [
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "Button Pressed",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "type",
+                "pt": "msg",
+                "to": "Speech",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "target",
+                "pt": "msg",
+                "to": "Scotts Speaker",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "it jit",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 570,
+        "y": 160,
+        "wires": [
+            [
+                "884190b7.fcccb"
+            ]
+        ]
+    },
+    {
+        "id": "f627441.1d8a9b8",
+        "type": "change",
+        "z": "67f1efdc.110188",
+        "name": "Bloody Hell!",
+        "rules": [
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "Button Pressed",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "type",
+                "pt": "msg",
+                "to": "Speech",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "target",
+                "pt": "msg",
+                "to": "Scotts Speaker",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "Bloody Hell!",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 590,
+        "y": 200,
+        "wires": [
+            [
+                "ba2a4e96.38183"
+            ]
+        ]
+    },
+    {
+        "id": "23398b41.849d64",
+        "type": "change",
+        "z": "67f1efdc.110188",
+        "name": "Yee Ha!",
+        "rules": [
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "Button Pressed",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "type",
+                "pt": "msg",
+                "to": "Speech",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "target",
+                "pt": "msg",
+                "to": "Scotts Speaker",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "Yee Ha!",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 580,
+        "y": 240,
+        "wires": [
+            [
+                "573426cb.688fb8"
+            ]
+        ]
+    },
+    {
+        "id": "477a4cd6.fbd194",
+        "type": "change",
+        "z": "67f1efdc.110188",
+        "name": "Oh poop",
+        "rules": [
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "Button Pressed",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "type",
+                "pt": "msg",
+                "to": "Speech",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "target",
+                "pt": "msg",
+                "to": "Scotts Speaker",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "Oh poop",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 580,
+        "y": 320,
+        "wires": [
+            [
+                "edbcc362.8a038"
+            ]
+        ]
+    },
+    {
+        "id": "94a22f0a.8a6d4",
+        "type": "change",
+        "z": "67f1efdc.110188",
+        "name": "toggle Screens",
+        "rules": [
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "Button Pressed",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "type",
+                "pt": "msg",
+                "to": "Control",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "target",
+                "pt": "msg",
+                "to": "TasmOTA/Screens/cmnd/POWER",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "toggle",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 600,
+        "y": 560,
+        "wires": [
+            [
+                "bdded2e4.4994d"
+            ]
+        ]
+    },
+    {
+        "id": "5fd1f360.77e72c",
+        "type": "change",
+        "z": "67f1efdc.110188",
+        "name": "toggle NightLight",
+        "rules": [
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "Button Pressed",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "type",
+                "pt": "msg",
+                "to": "Control",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "target",
+                "pt": "msg",
+                "to": "cmnd/Night_Light/POWER",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "toggle",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 610,
+        "y": 680,
+        "wires": [
+            [
+                "5c362ee6.22b7e"
+            ]
+        ]
+    },
+    {
+        "id": "81371de5.c7e41",
+        "type": "change",
+        "z": "67f1efdc.110188",
+        "name": "toggle PantryLight",
+        "rules": [
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "Button Pressed",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "type",
+                "pt": "msg",
+                "to": "Control",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "target",
+                "pt": "msg",
+                "to": "cmnd/PantryLight/POWER",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "toggle",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 610,
+        "y": 600,
+        "wires": [
+            [
+                "28dca17.38b0b5e"
+            ]
+        ]
+    },
+    {
+        "id": "40d2093d.283f98",
+        "type": "change",
+        "z": "67f1efdc.110188",
+        "name": "toggle BeerLight",
+        "rules": [
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "Button Pressed",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "type",
+                "pt": "msg",
+                "to": "Control",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "target",
+                "pt": "msg",
+                "to": "cmnd/Beer_Light/POWER",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "toggle",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 600,
+        "y": 640,
+        "wires": [
+            [
+                "55a67f69.48409"
+            ]
+        ]
+    },
+    {
+        "id": "c566ad0b.aadf5",
+        "type": "change",
+        "z": "67f1efdc.110188",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "target",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 990,
+        "y": 80,
+        "wires": [
+            [
+                "c895d910.352f08",
+                "ae88fa.ec8a8708"
+            ]
+        ]
+    },
+    {
+        "id": "af2b73ea.20735",
+        "type": "link in",
+        "z": "67f1efdc.110188",
+        "name": "",
+        "links": [
+            "4787e954.dca8f8",
+            "ab11f967.ca9318",
+            "78928728.913068",
+            "884190b7.fcccb",
+            "ba2a4e96.38183",
+            "573426cb.688fb8",
+            "bb32bce.4eb6e4",
+            "edbcc362.8a038",
+            "fe187230.31bad",
+            "5c8a909e.ffc5b",
+            "a09ae489.32bed8",
+            "e6840c01.acfc8",
+            "bdded2e4.4994d",
+            "5c362ee6.22b7e",
+            "55a67f69.48409",
+            "28dca17.38b0b5e"
+        ],
+        "x": 935,
+        "y": 40,
+        "wires": [
+            [
+                "c566ad0b.aadf5"
+            ]
+        ]
+    },
+    {
+        "id": "c895d910.352f08",
+        "type": "debug",
+        "z": "67f1efdc.110188",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1070,
+        "y": 40,
+        "wires": []
+    },
+    {
+        "id": "ae88fa.ec8a8708",
+        "type": "mqtt out",
+        "z": "67f1efdc.110188",
+        "name": "",
+        "topic": "",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "f32dd71f.7c852",
+        "x": 1090,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "f32dd71f.7c852",
+        "type": "mqtt-broker",
+        "name": "",
+        "broker": "skynet",
+        "port": "1883",
+        "clientid": "",
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": "",
+        "willMsg": {},
+        "sessionExpiry": ""
+    }
+]
