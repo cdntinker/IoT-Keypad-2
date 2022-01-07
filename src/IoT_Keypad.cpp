@@ -32,6 +32,12 @@ char ClientName[] = "unoClient";   // Must be unique
 char ClientName[] = "nanoClient";   // Must be unique
 #endif
 
+#ifdef ArduinoProMicro
+#define EthENC28J60
+#define KeyPadNano
+char ClientName[] = "nanoClient";   // Must be unique
+#endif
+
 int sendit=0;
 char msg[32]; //  Why in hell was this limited to 20 in the original?
               //  MQTT allows 268,435,456 bytes.
@@ -74,6 +80,9 @@ void setup()
 #endif
 #ifdef ArduinoProMini
   Serial.println(F("| Running on a Pro-Mini    |"));
+#endif
+#ifdef ArduinoProMicro
+  Serial.println(F("| Running on a Pro-Micro   |"));
 #endif
   Serial.println(F("+--------------------------+"));
   Serial.print(F("Free RAM: ")); // If Free RAM is less than 180... it'll suck!
